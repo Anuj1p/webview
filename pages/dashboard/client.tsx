@@ -15,9 +15,16 @@ const DashBoardClient = (props: IDashBoardClient) => {
     <div>
       <h1>Client Dashboard</h1>
 
-      <button onClick={() => {
-        void router.push('/second-page/client')
-      }}>Go to webview</button>
+      <button
+        onClick={() => {
+          if (window.nativeAPI && window.nativeAPI.showToast) {
+            window.nativeAPI.showToast("Hello from WebView!");
+          }
+          void router.push("/second-page/client");
+        }}
+      >
+        Go to webview
+      </button>
     </div>
   );
 };
