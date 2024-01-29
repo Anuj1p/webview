@@ -1,4 +1,5 @@
 import { IHeaders } from "@/types/common/type";
+import { useRouter } from "next/router";
 
 interface ISecondScreenClient {
   headers: IHeaders;
@@ -6,7 +7,19 @@ interface ISecondScreenClient {
 
 const SecondScreenClient = (props: ISecondScreenClient) => {
   const { headers } = props;
-  return <div>Second Screen Client</div>;
+  const router = useRouter();
+  return (
+    <>
+      <div>Second Screen Client</div>
+      <button
+        onClick={() => {
+          void router.push("/third-page/client");
+        }}
+      >
+        Go to third page
+      </button>
+    </>
+  );
 };
 
 export default SecondScreenClient;
