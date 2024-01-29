@@ -1,4 +1,5 @@
 import { IHeaders } from "@/types/common/type";
+import { useRouter } from "next/router";
 
 interface IThirdScreenClient {
   headers: IHeaders;
@@ -6,7 +7,12 @@ interface IThirdScreenClient {
 
 const ThirdScreenClient = (props: IThirdScreenClient) => {
   const { headers } = props;
-  return <div>Third Screen Client</div>;
+  const router = useRouter()
+  return (
+  <div>
+    <button onClick={() => void router.back()}>Go Back</button>
+    <div>Third Screen Client</div>
+  </div>);
 };
 
 export default ThirdScreenClient;

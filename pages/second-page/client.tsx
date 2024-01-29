@@ -10,6 +10,7 @@ const SecondScreenClient = (props: ISecondScreenClient) => {
   const router = useRouter();
   return (
     <>
+      <button onClick={() => void router.back()}>Go Back</button>
       <div>Second Screen Client</div>
       <button
         onClick={() => {
