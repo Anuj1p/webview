@@ -1,4 +1,5 @@
 import { IHeaders } from "@/types/common/type";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 interface IDashBoardClient {
@@ -15,6 +16,7 @@ const DashBoardClient = (props: IDashBoardClient) => {
     <div>
       <h1>Client Dashboard</h1>
 
+      <Link href='/second-page/client' className="py-3">Go to webview by link</Link>
       <button
         onClick={() => {
           if (window.nativeAPI && window.nativeAPI.showToast) {
