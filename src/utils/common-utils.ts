@@ -5,6 +5,7 @@ declare global {
   interface Window {
     nativeAPI?: {
       showToast: (message: string) => void;
+      statusBarColor: (color: string) => void;
     }
 
   }}
