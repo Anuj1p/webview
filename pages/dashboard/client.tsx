@@ -27,6 +27,7 @@ const DashBoardClient = (props: IDashBoardClient) => {
       <Link href="/second-page/client" className="py-3">
         Go to webview by link
       </Link>
+      <div>sfkjghfdkj</div>
       <button
         onClick={() => {
           if (window.nativeAPI && window.nativeAPI.showToast) {
