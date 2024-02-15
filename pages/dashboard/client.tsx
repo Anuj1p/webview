@@ -2,16 +2,25 @@ import { IHeaders } from "@/types/common/type";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useCommonState } from "../../state/context";
+import { isEmpty } from "lodash";
 
 interface IDashBoardClient {
-  headers: IHeaders;
+  authHeaders?: IHeaders
 }
 
 const DashBoardClient = (props: IDashBoardClient) => {
-  const { headers } = props;
+  const { authHeaders = {} } = props;
+
+  const globalState = useCommonState();
+
+  const { headers } = globalState;
+  const newHeaders = isEmpty(headers)
+    ? authHeaders
+    : headers;
   const router = useRouter();
   console.log("====================================");
-  console.log(headers);
+  console.log(newHeaders);
   console.log("====================================");
 
   useEffect(() => {
