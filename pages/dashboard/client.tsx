@@ -19,14 +19,16 @@ const DashBoardClient = (props: IDashBoardClient) => {
     ? authHeaders
     : headers;
   const router = useRouter();
-  console.log("====================================");
-  console.log(newHeaders);
-  console.log("====================================");
+  
 
   useEffect(() => {
     if (window.nativeAPI && window.nativeAPI.statusBarColor) {
       window.nativeAPI.statusBarColor("#ffffff");
     }
+    console.log("====================================");
+  console.log(newHeaders);
+  console.log("====================================");
+  window.Android.showToast('sdgdfgdffg')
   }, []);
 
   return (

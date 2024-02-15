@@ -8,8 +8,13 @@ declare global {
       showToast: (message: string) => void;
       statusBarColor: (color: string) => void;
     };
+    Android: {
+      showToast: (message: string) => void;
+      statusBarColor: (color: string) => void;
+    };
+    }
   }
-}
+
 
 export const getHeaders = (context: GetServerSidePropsContext) => {
   const { req, query } = context;
