@@ -13,8 +13,9 @@ declare global {
 export const getHeaders = (context: GetServerSidePropsContext) => {
   const { req } = context;
   const platform = req.headers.platform ?? "web";
-
+  const headers = req.headers
   return {
+    headers,
     platform,
   };
 };
