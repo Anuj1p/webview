@@ -1,3 +1,4 @@
+import { IHeaders } from "@/types/common/type";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 
 declare global {
@@ -16,7 +17,7 @@ export const getHeaders = (context: GetServerSidePropsContext) => {
     ...req.headers,
     ...query,
   };
-  let headers = {};
+  let headers: IHeaders = {};
   if (Authorization && platform) {
     headers = {
       Authorization,
@@ -40,7 +41,7 @@ export const getHeaders = (context: GetServerSidePropsContext) => {
     }
   }
   if (req.headers["x-amzn-trace-id"]) {
-    headers["x-amzn-trace-id"] = req.headers["x-amzn-trace-id"];
+    headers["x-amzn-trace-id"] = req.headers["x-amzn-trace-id"] as string;
   }
   return headers;
 };
@@ -53,7 +54,10 @@ export const getAPPHeaders = (context: GetServerSidePropsContext) => {
     ...query,
   };
   if (memberid === "") {
-    memberid = (context.query.memberId ?? context.req.cookies.memberId) || "";
+    memberid =
+      ((context.query.memberId as string) ??
+        (context.req.cookies.memberId as string)) ||
+      "";
   }
   return { ...newHeaders, memberid };
 };
@@ -72,7 +76,9 @@ export const getNativeHeaders = (context: GetServerSidePropsContext) => {
   };
   let mId = memberid;
   if (memberid === "") {
-    mId = (context.query.memberId ?? context.req.cookies.memberId) || "";
+    mId =
+      ((context.query.memberId as string) ?? context.req.cookies.memberId) ||
+      "";
   }
   return { ...newHeaders, version, memberid: mId, hidenav };
 };

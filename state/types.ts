@@ -146,7 +146,7 @@ export type ACTIONTYPE =
     }
   | {
       type: typeof UPDATE_GLOBAL_STATE
-      data
+      data: any
     }
   | {
       type: typeof UPDATE_LANDING_URL
